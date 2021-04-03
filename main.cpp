@@ -4,34 +4,38 @@ using namespace std;
 
 int main() {
 	setlocale(LC_ALL, "Russian");
-	cout << "Îáúÿâëÿåì ïóñòóþ î÷åðåäü:" << endl;
+	cout << "ÐžÐ±ÑŠÑÐ²Ð»ÑÐµÐ¼ Ð¿ÑƒÑÑ‚ÑƒÑŽ Ð¾Ñ‡ÐµÑ€ÐµÐ´ÑŒ:" << endl;
 	Queue<int> fedor;
 
-	cout << "Âûâîäèì ïóñòóþ î÷åðåäü:" << endl;
+	cout << "Ð’Ñ‹Ð²Ð¾Ð´Ð¸Ð¼ Ð¿ÑƒÑÑ‚ÑƒÑŽ Ð¾Ñ‡ÐµÑ€ÐµÐ´ÑŒ:" << endl;
 	cout << fedor << endl;
 
-	cout << "Äîáàâëÿåì â î÷åðåäü ýëåìåíòû: 1, 3, 5, 6, 7, 8, 10 è 13" << endl;
+	cout << "Ð”Ð¾Ð±Ð°Ð²Ð»ÑÐµÐ¼ Ð² Ð¾Ñ‡ÐµÑ€ÐµÐ´ÑŒ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ñ‹: 1, 3, 5, 6, 7, 8, 10 Ð¸ 13" << endl;
 	fedor.addEnd(1).addEnd(3).addEnd(5).addEnd(6).addEnd(7).addEnd(8).addEnd(10).addEnd(13);
 	cout << fedor << endl;
 
-	cout << "Ñêîïèðóåì î÷åðåäü: " << endl;
+	cout << "Ð¡ÐºÐ¾Ð¿Ð¸Ñ€ÑƒÐµÐ¼ Ð¾Ñ‡ÐµÑ€ÐµÐ´ÑŒ: " << endl;
 	Queue<int> copefedor = fedor;
 	cout << "fedor: " << fedor << endl;
 	cout << "copefedor: " << copefedor << endl;
 
-	cout << "Óäàëèì ïåðâûå 2 ýëåìåíòà ïåðâîé î÷åðåäè:" << endl;
+	cout << "Ð£Ð´Ð°Ð»Ð¸Ð¼ Ð¿ÐµÑ€Ð²Ñ‹Ðµ 2 ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð° Ð¿ÐµÑ€Ð²Ð¾Ð¹ Ð¾Ñ‡ÐµÑ€ÐµÐ´Ð¸:" << endl;
 	fedor.popFront().popFront();
 	cout << "fedor: " << fedor << endl;
 	cout << "copefedor: " << copefedor << endl;
 
-	cout << "Î÷èñòèì îáå î÷åðåäè:" << endl;
+	cout << "ÐžÑ‡Ð¸ÑÑ‚Ð¸Ð¼ Ð¾Ð±Ðµ Ð¾Ñ‡ÐµÑ€ÐµÐ´Ð¸:" << endl;
 	fedor.clear();
 	copefedor.clear();
 	cout << "fedor: " << fedor << endl;
 	cout << "copefedor: " << copefedor << endl;
 
+	
 
-
+	
+	system("PAUSE");
+	return 0;
+}
 
 	system("PAUSE");
 	return 0;
