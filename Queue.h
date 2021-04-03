@@ -4,27 +4,27 @@
 template <class T>
 class Queue
 {
-	template <typename T1> friend std::ostream& operator<< (std::ostream&, const Queue<T1>&);	// обьявляется оператор вывода, "дружим" со стандартным оператором вывода
+	template <typename T1> friend std::ostream& operator<< (std::ostream&, const Queue<T1>&);	// РѕР±СЊСЏРІР»СЏРµС‚СЃСЏ РѕРїРµСЂР°С‚РѕСЂ РІС‹РІРѕРґР°, "РґСЂСѓР¶РёРј" СЃРѕ СЃС‚Р°РЅРґР°СЂС‚РЅС‹Рј РѕРїРµСЂР°С‚РѕСЂРѕРј РІС‹РІРѕРґР°
 private:
-	class Node;	// обьвляем элемент очереди
-	Node* first;	// обьявляем первый элемент очереди(указатель)
-	Node* latest;	// обьявляем последний элемент очереди(указатель)
-	size_t size;// обьявляем размер очереди
+	class Node;	// РѕР±СЊРІР»СЏРµРј СЌР»РµРјРµРЅС‚ РѕС‡РµСЂРµРґРё
+	Node* first;	// РѕР±СЊСЏРІР»СЏРµРј РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ РѕС‡РµСЂРµРґРё(СѓРєР°Р·Р°С‚РµР»СЊ)
+	Node* latest;	// РѕР±СЊСЏРІР»СЏРµРј РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ РѕС‡РµСЂРµРґРё(СѓРєР°Р·Р°С‚РµР»СЊ)
+	size_t size;// РѕР±СЊСЏРІР»СЏРµРј СЂР°Р·РјРµСЂ РѕС‡РµСЂРµРґРё
 public:
-	Queue();	// обьявляется конструктор
-	Queue(const Queue<T>& other);// обьявляется конструктор с параметрами
-	~Queue(); // обьявляется деструктор
-	Queue<T>& addEnd(const T& value); // добавить в конец очереди элемент
-	Queue<T>& popFront();	// убрать из начала
-	size_t getSize();	// узнать сколько элементов в очереди
-	Node* getFirst() const;	// взять первый элемент очереди(покажет кто первый в очереди)
-	void clear();	// очистить очередь
+	Queue();	// РѕР±СЊСЏРІР»СЏРµС‚СЃСЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	Queue(const Queue<T>& other);// РѕР±СЊСЏРІР»СЏРµС‚СЃСЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
+	~Queue(); // РѕР±СЊСЏРІР»СЏРµС‚СЃСЏ РґРµСЃС‚СЂСѓРєС‚РѕСЂ
+	Queue<T>& addEnd(const T& value); // РґРѕР±Р°РІРёС‚СЊ РІ РєРѕРЅРµС† РѕС‡РµСЂРµРґРё СЌР»РµРјРµРЅС‚
+	Queue<T>& popFront();	// СѓР±СЂР°С‚СЊ РёР· РЅР°С‡Р°Р»Р°
+	size_t getSize();	// СѓР·РЅР°С‚СЊ СЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ РІ РѕС‡РµСЂРµРґРё
+	Node* getFirst() const;	// РІР·СЏС‚СЊ РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ РѕС‡РµСЂРµРґРё(РїРѕРєР°Р¶РµС‚ РєС‚Рѕ РїРµСЂРІС‹Р№ РІ РѕС‡РµСЂРµРґРё)
+	void clear();	// РѕС‡РёСЃС‚РёС‚СЊ РѕС‡РµСЂРµРґСЊ
 };
 
 template <class T>
-Queue<T>::Queue() {	// реализовали конструктор
-	this->first = this->latest = nullptr;	//	обьявили очередь
-	this->size = 0;
+Queue<T>::Queue() {	// СЂРµР°Р»РёР·РѕРІР°Р»Рё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	this->first = this->latest = nullptr;	//	РѕР±СЊСЏРІРёР»Рё РѕС‡РµСЂРµРґСЊ
+	this->size = 0;	
 }
 
 template <class T>
@@ -34,72 +34,72 @@ Queue<T>::~Queue() {
 
 template <class T>
 void Queue<T>::clear() {
-	Node* temp = first;	// временной переменной передели значение 1-го элемента
+	Node* temp = first;	// РІСЂРµРјРµРЅРЅРѕР№ РїРµСЂРµРјРµРЅРЅРѕР№ РїРµСЂРµРґРµР»Рё Р·РЅР°С‡РµРЅРёРµ 1-РіРѕ СЌР»РµРјРµРЅС‚Р°
 	while (temp != nullptr) {	// 
-		temp = first->next;	// запоминаем следующий элемент(следущий после 1-го) 
-		delete first;	// удаляем 1-й элемент
-		first = temp;	// 2-й элемент теперь является 1-м
+		temp = first->next;	// Р·Р°РїРѕРјРёРЅР°РµРј СЃР»РµРґСѓСЋС‰РёР№ СЌР»РµРјРµРЅС‚(СЃР»РµРґСѓС‰РёР№ РїРѕСЃР»Рµ 1-РіРѕ) 
+		delete first;	// СѓРґР°Р»СЏРµРј 1-Р№ СЌР»РµРјРµРЅС‚
+		first = temp;	// 2-Р№ СЌР»РµРјРµРЅС‚ С‚РµРїРµСЂСЊ СЏРІР»СЏРµС‚СЃСЏ 1-Рј
 	}
-	this->size = 0;
+	this->size = 0;	
 }
 
 template <class T>
-Queue<T>::Queue(const Queue<T>& other) {	// конструктор копирования
+Queue<T>::Queue(const Queue<T>& other) {	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 	Queue();
-	Node* temp = other.getFirst();	// временной переменной передается значение переменной 1-го элемента другой очереди
+	Node* temp = other.getFirst();	// РІСЂРµРјРµРЅРЅРѕР№ РїРµСЂРµРјРµРЅРЅРѕР№ РїРµСЂРµРґР°РµС‚СЃСЏ Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ 1-РіРѕ СЌР»РµРјРµРЅС‚Р° РґСЂСѓРіРѕР№ РѕС‡РµСЂРµРґРё
 	while (temp != nullptr) {	//
-		this->addEnd(temp->value);	//	пока у другой очереди есть элементы, добавляем в новую очередь
-		temp = temp->next;	// переходим к следующему элементу
+		this->addEnd(temp->value);	//	РїРѕРєР° Сѓ РґСЂСѓРіРѕР№ РѕС‡РµСЂРµРґРё РµСЃС‚СЊ СЌР»РµРјРµРЅС‚С‹, РґРѕР±Р°РІР»СЏРµРј РІ РЅРѕРІСѓСЋ РѕС‡РµСЂРµРґСЊ
+		temp = temp->next;	// РїРµСЂРµС…РѕРґРёРј Рє СЃР»РµРґСѓСЋС‰РµРјСѓ СЌР»РµРјРµРЅС‚Сѓ
 	}
 }
 
 template <class T>
-typename Queue<T>::Node* Queue<T>::getFirst() const {	// берем 1-й элемент очереди 
+typename Queue<T>::Node* Queue<T>::getFirst() const {	// Р±РµСЂРµРј 1-Р№ СЌР»РµРјРµРЅС‚ РѕС‡РµСЂРµРґРё 
 	return first;
 }
 
 template <class T>
 size_t Queue<T>::getSize() {
-	return size;
+	return size;	
 }
 
 template <class T>
-Queue<T>& Queue<T>::popFront() {	// убираем 1-й элемент
-	if (first != nullptr) {	// если 1-й элемент не пустой
+Queue<T>& Queue<T>::popFront() {	// СѓР±РёСЂР°РµРј 1-Р№ СЌР»РµРјРµРЅС‚
+	if (first != nullptr) {	// РµСЃР»Рё 1-Р№ СЌР»РµРјРµРЅС‚ РЅРµ РїСѓСЃС‚РѕР№
 		Node* temp = first->next;	//
 		delete first; //
 		first = temp; //
-		size--;	//	размер очереди уменьшается
+		size--;	//	СЂР°Р·РјРµСЂ РѕС‡РµСЂРµРґРё СѓРјРµРЅСЊС€Р°РµС‚СЃСЏ
 	}
-	return *this;	// возвращаем 1-й элемент очереди
+	return *this;	// РІРѕР·РІСЂР°С‰Р°РµРј 1-Р№ СЌР»РµРјРµРЅС‚ РѕС‡РµСЂРµРґРё
 }
 
 template <class T>
-Queue<T>& Queue<T>::addEnd(const T& value) { // добавляем в конец элемент
-	Node* last = new Node(value);	// выделяем память под нового участника очереди 
+Queue<T>& Queue<T>::addEnd(const T& value) { // РґРѕР±Р°РІР»СЏРµРј РІ РєРѕРЅРµС† СЌР»РµРјРµРЅС‚
+	Node* last = new Node(value);	// РІС‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ РїРѕРґ РЅРѕРІРѕРіРѕ СѓС‡Р°СЃС‚РЅРёРєР° РѕС‡РµСЂРµРґРё 
 	if (first == nullptr) {	//
 		first = latest = last;	// 
-		first->next = nullptr;	// если первый = последний, то след  элемента  нет
+		first->next = nullptr;	// РµСЃР»Рё РїРµСЂРІС‹Р№ = РїРѕСЃР»РµРґРЅРёР№, С‚Рѕ СЃР»РµРґ  СЌР»РµРјРµРЅС‚Р°  РЅРµС‚
 	}
 	else {
-		latest->next = last;	// после последнего элемента добавляется новый элемент
-		last->next = nullptr;	// после last нет элемента
-		latest = last;	// последний элемент last
+		latest->next = last;	// РїРѕСЃР»Рµ РїРѕСЃР»РµРґРЅРµРіРѕ СЌР»РµРјРµРЅС‚Р° РґРѕР±Р°РІР»СЏРµС‚СЃСЏ РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚
+		last->next = nullptr;	// РїРѕСЃР»Рµ last РЅРµС‚ СЌР»РµРјРµРЅС‚Р°
+		latest = last;	// РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ last
 	}
 	size++;	//
 	return *this;	//	
 }
 
 template <class T>
-class Queue<T>::Node	// вложенный класс очереди
+class Queue<T>::Node	// РІР»РѕР¶РµРЅРЅС‹Р№ РєР»Р°СЃСЃ РѕС‡РµСЂРµРґРё
 {
 public:
-	T value;	// один элемент  
-	Node* next;	// следующий элемент
+	T value;	// РѕРґРёРЅ СЌР»РµРјРµРЅС‚  
+	Node *next;	// СЃР»РµРґСѓСЋС‰РёР№ СЌР»РµРјРµРЅС‚
 	/*Node() {
 		next = nullptr;
 	}*/
-	Node(const T& val) {	// передается параметр value 
+	Node(const T& val) {	// РїРµСЂРµРґР°РµС‚СЃСЏ РїР°СЂР°РјРµС‚СЂ value 
 		//Node(); //
 		value = val;	//
 		next = nullptr;	//
@@ -110,14 +110,14 @@ public:
 };
 
 template <class T>
-std::ostream& operator<<(std::ostream& out, const Queue<T>& queue) {	// реализация стандартного оператора вывода
-	if (queue.first != nullptr) {	// если очередь не пуста
-		auto current = queue.first;	// берем 1-й элемент
-		while (current != queue.latest) {	// пока не дошли до конца очереди
-			out << current->value << " ";	// выводим элементы
-			current = current->next;	// идем к следующему элементу
+std::ostream& operator<<(std::ostream& out, const Queue<T>& queue) {	// СЂРµР°Р»РёР·Р°С†РёСЏ СЃС‚Р°РЅРґР°СЂС‚РЅРѕРіРѕ РѕРїРµСЂР°С‚РѕСЂР° РІС‹РІРѕРґР°
+	if (queue.first != nullptr) {	// РµСЃР»Рё РѕС‡РµСЂРµРґСЊ РЅРµ РїСѓСЃС‚Р°
+		auto current = queue.first;	// Р±РµСЂРµРј 1-Р№ СЌР»РµРјРµРЅС‚
+		while (current != queue.latest) {	// РїРѕРєР° РЅРµ РґРѕС€Р»Рё РґРѕ РєРѕРЅС†Р° РѕС‡РµСЂРµРґРё
+			out << current->value << " ";	// РІС‹РІРѕРґРёРј СЌР»РµРјРµРЅС‚С‹
+			current = current->next;	// РёРґРµРј Рє СЃР»РµРґСѓСЋС‰РµРјСѓ СЌР»РµРјРµРЅС‚Сѓ
 		}
-		return out << current->value;	// выводим последний элемент
+		return out << current->value;	// РІС‹РІРѕРґРёРј РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚
 	}
-	return out << "Queue is empty";		// очередь пуста
+	return out << "Queue is empty";		// РѕС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°
 }
