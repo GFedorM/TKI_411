@@ -136,6 +136,10 @@ StyleCopReport.xml
 *.pidb
 *.svclog
 *.scc
+Quue_project.vcxproj
+Quue_project.sln
+Quue_project.vcxproj.filters
+Quue_project.vcxproj.user
 
 # Chutzpah Test files
 _Chutzpah*
